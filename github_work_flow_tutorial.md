@@ -1,4 +1,4 @@
-# github work flow 总结
+# github work flow conclusion
 
 ## create a new repo in ACCOUNT1
 create a new repo in github website.
@@ -7,7 +7,7 @@ create a new repo in github website.
 ## clone to local (https)
 **You can [cache your GitHub password in Git](https://help.github.com/articles/caching-your-github-password-in-git)** to avoid input username and password everytime
 ```
-$ git clone https://github.com/debuggy/git_workflow_tutorial.git
+$ git clone https://github.com/ACOOUNT1/git_workflow_tutorial.git
 (no require for any authorization)
 Cloning into 'git_workflow_tutorial'...
 ```
@@ -15,7 +15,7 @@ Cloning into 'git_workflow_tutorial'...
 If you use ssh link to clone, **you should [add your public ssh key in this ACCOUNT1](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)**. 
 
 ```
-$ git clone git@github.com:debuggy/git_workflow_tutorial.git
+$ git clone git@github.com:ACCOUNT1/git_workflow_tutorial.git
 Cloning into 'git_workflow_tutorial'...
 Warning: Permanently added the RSA host key for IP address '192.30.255.112' to the list of known hosts.
 Permission denied (publickey).
@@ -30,8 +30,8 @@ and the repository exists.
 
 ```
 $ (master) > git remote -v
-origin	https://github.com/debuggy/git_workflow_tutorial.git (fetch)
-origin	https://github.com/debuggy/git_workflow_tutorial.git (push)
+origin	https://github.com/ACCOUNT1/git_workflow_tutorial.git (fetch)
+origin	https://github.com/ACCOUNT1/git_workflow_tutorial.git (push)
 ```
 
 ##### 2. [check for existing SSH keys](https://help.github.com/articles/checking-for-existing-ssh-keys) and [generated a new SSH key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key), then [Add your SSH key to the ssh-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key)
@@ -48,7 +48,7 @@ Host *
 ##### 3. add ssh url to remote repo
 
 ```
-$ (master) > git remote add sshOrigin git@github.com:debuggy/git_workflow_tutorial.git
+$ (master) > git remote add sshOrigin git@github.com:ACCOUNT1/git_workflow_tutorial.git
 ```
 
 
@@ -58,7 +58,7 @@ $ (master) > git remote add sshOrigin git@github.com:debuggy/git_workflow_tutori
 ```
 $ (master) > git checkout -b dev
 ```
-##### 2. add some lines in README.md, add a new file dev.txt.**uncommit change in master and commit it in new branch**
+##### 2. If you make some changes in master (add some lines in README.md, add a new file dev.txt), and want to **uncommit these changes in master and recommit it in new branch dev**
 
 * first do some changes in master branch
 
@@ -114,7 +114,7 @@ $ (master) > git reset HEAD~2 ##move 2 commits before HEAD and leave the changes
 $ (master) > git checkout dev ##bring the changes to new branch, and keep master commit history clean
 ```
 
-##### 3. commit the changes in new branch
+##### 3. commit the changes in new branch dev
 
 ```
 $ (dev) > git commit -a  ## **this command only commit the changes in README.md and cannot commit untracked file dev.txt**
@@ -136,9 +136,9 @@ use command ```git fetch origin``` to update the remote branches and then set lo
 ```
 $ (dev) > git fetch origin
 $ (dev) > git branch --set-upstream-to=origin/dev dev ## set up stream
-$ (master) > git checkout --track origin/dev ## create a new branch dev to track origin/dev (a local dev branch must not exist)
-$ (dev) > git checkout -b new_dev origin/dev ## create a new branch new_dev to track origin/dev
-$ (dev) > git branch -u origin/dev ## make current branch track origin/dev
+$ (master) > git checkout --track origin/dev ## alternative 1: create a new branch dev to track origin/dev (a local dev branch must not exist)
+$ (dev) > git checkout -b new_dev origin/dev ## alternative 2: create a new branch new_dev to track origin/dev
+$ (dev) > git branch -u origin/dev ## alternative 3: make current branch track origin/dev
 ```
 
 ##### 3. update the branch dev using git pull. 
@@ -181,17 +181,17 @@ For the contributor: First pull this feature and merge to dev locally and make s
 ##### 2. clone this repo to local 
 
 ```
-$ git clone https://github.com/zyddora/git_workflow_tutorial.git
+$ git clone https://github.com/ACCOUNT2/git_workflow_tutorial.git
 ```
 ##### 3. add upstream to keep synced
 
 ```
-$ (master) > git remote add upstream https://github.com/debuggy/git_workflow_tutorial.git
+$ (master) > git remote add upstream https://github.com/ACCOUNT1/git_workflow_tutorial.git
 $ (master) > git remote -v
-origin	https://github.com/zyddora/git_workflow_tutorial.git (fetch)
-origin	https://github.com/zyddora/git_workflow_tutorial.git (push)
-upstream	https://github.com/debuggy/git_workflow_tutorial.git (fetch)
-upstream	https://github.com/debuggy/git_workflow_tutorial.git (push)
+origin	https://github.com/ACCOUNT2/git_workflow_tutorial.git (fetch)
+origin	https://github.com/ACCOUNT2/git_workflow_tutorial.git (push)
+upstream	https://github.com/ACCOUNT1/git_workflow_tutorial.git (fetch)
+upstream	https://github.com/ACCOUNT1/git_workflow_tutorial.git (push)
 $ (master) > git fetch upstream
 $ (master) > git branch -va
 * master                    41876c8 Initial commit
